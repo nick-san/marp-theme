@@ -1,0 +1,46 @@
+/* openSUSE inspired Marp theme */
+@import 'default';
+
+:root {
+  --main-color: #73ba25; /* openSUSE green */
+  --text-color: #fff;
+  --background: #1c4058;
+  --heading-font: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --body-font: 'Zen Kaku Gothic Antique', "Zen Kaku Gothic Antique Medium" Medium;
+}
+
+section {
+  background-color: var(--background);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  color: var(--main-color);
+  font-family: var(--heading-font);
+  font-weight: bold;
+}
+
+h1 {
+  border-bottom: 3px solid var(--main-color);
+  padding-bottom: 0.3em;
+}
+
+code {
+  background: #eef;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'Fira Code', monospace;
+}
+
+section::after {
+  content: 'openSUSE Theme';
+  font-size: 0.5em;
+  color: var(--main-color);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  opacity: 0.5;
+}
+
