@@ -1,25 +1,45 @@
 /* openSUSE inspired Marp theme */
+/* @theme openSUSE */
 @import 'default';
 
 :root {
+  /* openSUSE palette */
   --main-color: #73ba25; /* openSUSE green */
+  --main-color-dark: #5a9a17;
+  --accent-cyan: #35b9ab;
+  --accent-blue: #21a4df;
+  --accent-orange: #f0b429;
+  --accent-red: #e5534b;
+
   --text-color: #fff;
+  --text-muted: #b8c7d1;
   --background: #1c4058;
-  --heading-font: 'Segoe UI', 'Helvetica Neue', sans-serif;
-  --body-font: 'Zen Kaku Gothic Antique', "Zen Kaku Gothic Antique Medium" Medium;
+  --background-dark: #173f4f;
+  --surface: #12303f; /* code blocks, tables etc. */
+  --surface-light: #24506b;
+  --border-color: #2f6585;
+
+  --heading-font: 'Segoe UI', 'Helvetica Neue', 'Zen Kaku Gothic Antique', sans-serif;
+  --body-font: 'Zen Kaku Gothic Antique', 'Noto Sans JP', 'Segoe UI', sans-serif;
+  --code-font: 'Fira Code', 'Source Code Pro', 'Noto Sans Mono', monospace;
 }
 
+/* ---------- Base ---------- */
 section {
   background-color: var(--background);
+  background-image: linear-gradient(135deg, var(--background) 0%, var(--background-dark) 100%);
   color: var(--text-color);
   font-family: var(--body-font);
-  padding: 2rem;
+  padding: 2rem 3rem;
+  line-height: 1.6;
 }
 
-h1, h2, h3 {
+/* ---------- Headings ---------- */
+h1, h2, h3, h4, h5, h6 {
   color: var(--main-color);
   font-family: var(--heading-font);
   font-weight: bold;
+  margin: 0.4em 0;
 }
 
 h1 {
@@ -27,13 +47,291 @@ h1 {
   padding-bottom: 0.3em;
 }
 
-code {
-  background: #eef;
-  padding: 0.2em 0.4em;
-  border-radius: 4px;
-  font-family: 'Fira Code', monospace;
+h2 {
+  border-left: 8px solid var(--main-color);
+  padding-left: 0.5em;
 }
 
+h3 {
+  color: var(--accent-cyan);
+}
+
+h4, h5, h6 {
+  color: var(--text-muted);
+}
+
+/* ---------- Text ---------- */
+p {
+  margin: 0.5em 0;
+}
+
+strong {
+  color: var(--main-color);
+}
+
+em {
+  color: var(--accent-cyan);
+}
+
+del {
+  color: var(--text-muted);
+}
+
+mark {
+  background: var(--main-color);
+  color: var(--background-dark);
+  padding: 0 0.2em;
+  border-radius: 3px;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-blue);
+}
+
+a:hover {
+  color: var(--main-color);
+  border-bottom-color: var(--main-color);
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, var(--main-color), transparent);
+  margin: 1em 0;
+}
+
+kbd {
+  background: var(--surface-light);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-bottom-width: 3px;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  display: inline-block;
+  line-height: 1.2;
+  box-shadow: none;
+  vertical-align: middle;
+  font-family: var(--code-font);
+  font-size: 0.85em;
+}
+
+/* ---------- Lists ---------- */
+ul, ol {
+  padding-left: 1.5em;
+}
+
+li {
+  margin: 0.2em 0;
+}
+
+li::marker {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+ul ul li::marker,
+ol ul li::marker {
+  color: var(--accent-cyan);
+}
+
+/* ---------- Inline code ---------- */
+code {
+  background: var(--surface);
+  color: #a5e075;
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: var(--code-font);
+  font-size: 0.9em;
+}
+
+/* ---------- Code blocks ---------- */
+pre {
+  background: var(--surface);
+  color: #e6edf3;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--main-color);
+  border-radius: 6px;
+  padding: 0.8em 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow: auto;
+  line-height: 1.45;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+/* Syntax highlight (highlight.js) – dark palette tuned for openSUSE colors */
+pre .hljs-comment,
+pre .hljs-quote {
+  color: #7f97a6;
+  font-style: italic;
+}
+
+pre .hljs-keyword,
+pre .hljs-selector-tag,
+pre .hljs-meta .hljs-keyword,
+pre .hljs-doctag {
+  color: #8fd14f;
+  font-weight: bold;
+}
+
+pre .hljs-string,
+pre .hljs-regexp,
+pre .hljs-addition,
+pre .hljs-meta .hljs-string {
+  color: #f0c674;
+}
+
+pre .hljs-number,
+pre .hljs-literal,
+pre .hljs-symbol,
+pre .hljs-bullet {
+  color: #f99157;
+}
+
+pre .hljs-title,
+pre .hljs-title.function_,
+pre .hljs-section {
+  color: #5cc8ff;
+}
+
+pre .hljs-title.class_,
+pre .hljs-type,
+pre .hljs-built_in {
+  color: #4fd1c5;
+}
+
+pre .hljs-attr,
+pre .hljs-attribute,
+pre .hljs-variable,
+pre .hljs-template-variable,
+pre .hljs-property {
+  color: #c3a6ff;
+}
+
+pre .hljs-name,
+pre .hljs-tag,
+pre .hljs-selector-id,
+pre .hljs-selector-class {
+  color: #73ba25;
+}
+
+pre .hljs-meta,
+pre .hljs-params,
+pre .hljs-subst,
+pre .hljs-operator,
+pre .hljs-punctuation {
+  color: #d0dbe3;
+}
+
+pre .hljs-deletion {
+  color: #ff7b72;
+  background: rgba(229, 83, 75, 0.15);
+}
+
+pre .hljs-addition {
+  background: rgba(115, 186, 37, 0.15);
+}
+
+pre .hljs-emphasis {
+  font-style: italic;
+}
+
+pre .hljs-strong {
+  font-weight: bold;
+}
+
+/* ---------- Blockquote ---------- */
+blockquote {
+  background: rgba(115, 186, 37, 0.1);
+  border-left: 6px solid var(--main-color);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-muted);
+  margin: 0.8em 0;
+  padding: 0.5em 1em;
+}
+
+blockquote::before,
+blockquote::after {
+  content: none;
+}
+
+blockquote p {
+  margin: 0.2em 0;
+}
+
+/* ---------- Tables ---------- */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0.8em 0;
+  font-size: 0.85em;
+}
+
+table th,
+table td {
+  border: 1px solid var(--border-color);
+  padding: 0.4em 0.9em;
+}
+
+table th {
+  background: var(--main-color);
+  color: var(--background-dark);
+  font-weight: bold;
+}
+
+table tr {
+  background: var(--surface);
+  border-top: none;
+}
+
+table tr:nth-child(2n) {
+  background: var(--surface-light);
+}
+
+/* ---------- Images ---------- */
+img {
+  background: transparent;
+  border-radius: 6px;
+}
+
+/* ---------- Header / Footer ---------- */
+header,
+footer {
+  color: var(--text-muted);
+  font-size: 0.55em;
+}
+
+header {
+  top: 0.8rem;
+  left: 3rem;
+}
+
+footer {
+  bottom: 1rem;
+  left: 3rem;
+}
+
+/* ---------- Brand mark & Pagination ---------- */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--main-color), var(--accent-cyan), var(--accent-blue));
+}
+
+/* Uses Marp's pagination (paginate: true). Shows "openSUSE Theme" when paginate is off. */
 section::after {
   content: 'openSUSE Theme';
   font-size: 0.5em;
@@ -41,6 +339,122 @@ section::after {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
+section[data-marpit-pagination]::after {
+  content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+  opacity: 0.8;
+}
+
+/* ---------- Class: lead (title slide) ---------- */
+section.lead {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-image:
+    radial-gradient(circle at 85% 15%, rgba(115, 186, 37, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(53, 185, 171, 0.2) 0%, transparent 40%),
+    linear-gradient(135deg, var(--background) 0%, var(--background-dark) 100%);
+}
+
+section.lead h1 {
+  font-size: 2.2em;
+  border-bottom: none;
+  margin-bottom: 0.2em;
+}
+
+section.lead h2 {
+  border-left: none;
+  padding-left: 0;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+section.lead p {
+  color: var(--text-muted);
+}
+
+/* ---------- Class: center ---------- */
+section.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------- Class: section (chapter divider) ---------- */
+section.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--main-color);
+  color: var(--background-dark);
+}
+
+section.section h1,
+section.section h2 {
+  color: var(--background-dark);
+  border-color: var(--background-dark);
+}
+
+section.section::before {
+  background: var(--background-dark);
+}
+
+section.section::after {
+  color: var(--background-dark);
+}
+
+/* ---------- Class: invert (light variant) ---------- */
+section.invert {
+  --text-color: #173f4f;
+  --text-muted: #4a6372;
+  --surface: #f2f7ee;
+  --surface-light: #e4efd9;
+  --border-color: #c5d9b3;
+  background: #ffffff;
+  color: var(--text-color);
+}
+
+section.invert h1,
+section.invert h2 {
+  color: var(--main-color-dark);
+}
+
+section.invert code {
+  color: #3d7a0f;
+}
+
+/* Keep code blocks dark even on the light variant for readability */
+section.invert pre {
+  background: #12303f;
+  color: #e6edf3;
+  border-color: #2f6585;
+  border-left-color: var(--main-color);
+}
+
+section.invert pre code {
+  color: #e6edf3;
+}
+
+section.invert table th {
+  color: #fff;
+  background: var(--main-color-dark);
+}
+
+/* ---------- Utility: columns ---------- */
+section.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 2rem;
+  align-content: start;
+}
+
+section.columns > h1,
+section.columns > h2 {
+  grid-column: 1 / -1;
+}
